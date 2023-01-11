@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
 const postSchema = new mongoose.Schema({
     title: {
@@ -18,7 +18,7 @@ const postSchema = new mongoose.Schema({
         default: ""
     },
     creator: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "User"
     },
     category: {

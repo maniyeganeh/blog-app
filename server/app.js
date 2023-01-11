@@ -10,7 +10,10 @@ import path from "path"
 import { fileURLToPath } from "url"
 import { register } from "./controllers/auth.js"
 import authRoutes from "./routes/auth.js"
-
+import userRoutes from "./routes/user.js"
+import postRoutes from "./routes/post.js"
+import { verifyToken } from "./middleware/auth.js"
+import { createPost } from "./controllers/post.js"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -36,7 +39,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 app.post("/auth/signup", upload.single("picture"), register);
+app.post("/posts", verifyToken, upload.single("picture"), createPost)
 app.use("/auth", authRoutes)
+app.use("/user", userRoutes)
+app.use("/posts", postRoutes)
 const PORT = process.env.PORT || 6060;
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,

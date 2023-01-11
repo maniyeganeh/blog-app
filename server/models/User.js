@@ -32,7 +32,13 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         default: "user"
-    }
+    },
+
+    posts: [{
+        type: mongoose.Types.ObjectId,
+        ref: "Post",
+    }],
+
 }, { timestamps: true })
 
 const User = mongoose.model("User", userSchema)
