@@ -3,14 +3,11 @@ import { loginUser } from "./authActions"
 
 const initialState = {
     mode: "dark",
-    auth: "false",
-    userInfo: {},
-    token: null,
-    loading: false
+
 }
 
-export const globalSlice = createSlice({
-    name: "global",
+export const modeSlice = createSlice({
+    name: "mode",
     initialState: initialState,
     reducers: {
         setMode: (state) => {
@@ -23,5 +20,5 @@ export const globalSlice = createSlice({
 
     }
 })
-export const { setMode } = globalSlice.actions
-export default globalSlice.reducer
+export const { setMode } = modeSlice.actions
+export default modeSlice.reducer

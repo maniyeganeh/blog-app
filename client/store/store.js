@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit"
-import globalSlice from "../store/index"
+import modeSlice from "./mode"
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { createWrapper } from "next-redux-wrapper"
+import authSlice from "./authSlice";
+
 const makeStore = configureStore({
     reducer: {
-        global: globalSlice
+        mode: modeSlice,
+        auth: authSlice
     },
     devTools: true,
 
 })
-setupListeners(makeStore.dispatch)
+
 
 export default makeStore

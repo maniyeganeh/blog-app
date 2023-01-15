@@ -24,6 +24,7 @@ export const register = async (req, res) => {
     }
 }
 export const login = async (req, res) => {
+
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email })
@@ -35,6 +36,7 @@ export const login = async (req, res) => {
         res.status(200).json({ token, user })
     }
     catch (err) {
+        console.log(err);
         res.status(500).json({ error: err.message })
     }
 }
