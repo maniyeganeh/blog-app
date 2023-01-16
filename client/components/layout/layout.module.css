@@ -1,0 +1,8 @@
+.layoutWrapper{
+    background-color: #dcdde1;
+    height: 100vh;
+    transition: 0.2s all linear;
+}
+.layoutWrapperDark{
+    background-color:#2f3640 ;
+}

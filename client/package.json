@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.2",
     "bootstrap": "^5.2.3",
+    "bootstrap-v4-rtl": "^4.6.2-1",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "html-react-parser": "^3.0.7",

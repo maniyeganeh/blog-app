@@ -6,7 +6,7 @@ const baseUrl = 'http://localhost:8080'
 export const loginUser = createAsyncThunk(
     "auth/login",
     async ({ email, password }, { rejectWithValue }) => {
-        console.log(email, password);
+
         try {
             const config = {
                 headers: {

@@ -1,0 +1,31 @@
+.navbarWrapper{
+    background-color: #f5f6fa;
+    height: 9vh;
+    padding: 5px 10px;
+    font-family: "IRANYekan-Bold";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s all linear;
+    
+
+}
+.navbarWrapperDark{
+    color: #dcdde1;
+    background-color: #353b48;
+}
+
+.menuItemsWrapper ul{
+    list-style: none;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+   
+}
+.menuItemsWrapper li{
+    display: inline;
+}
+.menuItemsWrapper li a{
+    text-decoration: none;
+   
+}

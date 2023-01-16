@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { loginUser } from "./authActions"
+
 
 const initialState = {
-    mode: "dark",
+    mode: typeof window !== "undefined" ? localStorage.getItem("mode") : "dark"
 
 }
 
@@ -11,7 +11,10 @@ export const modeSlice = createSlice({
     initialState: initialState,
     reducers: {
         setMode: (state) => {
-            state.mode = state.mode === "light" ? "dark" : "light"
+            state.mode = state.mode === "light" ? "dark" : "light";
+            if (typeof window !== "undefined") {
+                localStorage.setItem("mode", state.mode)
+            }
         },
 
 
