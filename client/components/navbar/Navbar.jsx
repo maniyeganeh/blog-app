@@ -23,7 +23,15 @@ const Navbar = () => {
       <Container fluid>
         <Row>
           <Col xs={6} sm={6} md={3}>
-            بلاگ
+            <Link
+              href="/"
+              style={{
+                color: mode !== 'dark' ? '#353b48' : '#dcdde1',
+                textDecoration: 'none',
+              }}
+            >
+              <h5>بلاگ</h5>
+            </Link>
           </Col>
           <Col xs={6} sm={6} md={9}>
             <div className={classes.menuItemsWrapper}>
@@ -42,9 +50,9 @@ const Navbar = () => {
                 ))}
                 <li onClick={modeHandler}>
                   {mode === 'dark' ? (
-                    <MdOutlineLightMode />
+                    <MdOutlineLightMode size={'20px'} />
                   ) : (
-                    <MdOutlineNightlight />
+                    <MdOutlineNightlight size={'20px'} />
                   )}
                 </li>
               </ul>

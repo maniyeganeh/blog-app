@@ -1,0 +1,35 @@
+.bannerWrapper{
+    background-color:#f5f6fa ;
+    height: 100px;
+    font-family: "Iran-sans-bold";
+    padding: 0px 20px;
+    border-radius: 10px;
+}
+.bannerWrapper h4{
+    font-size: 16px;
+}
+.bannerRow{
+    align-items: center;
+    justify-content: center;
+}
+.bannerInputGroup{
+    margin-top: 30px;
+}
+.bannerInputGroup input{
+    border-radius: 0px 10px 10px 0px !important;
+}
+.bannerInputGroup button{
+    border-radius: 10px 0px 0px 10px !important;
+}
+@media screen and (min-width:300px) and (max-width:700px) {
+.bannerWrapper{
+    padding: 10px;
+    text-align: center;
+    height: auto;
+}
+.bannerWrapper h4{
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+}

@@ -1,8 +1,16 @@
 .layoutWrapper{
     background-color: #dcdde1;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: auto;
     transition: 0.2s all linear;
+    padding-bottom: 70px;
 }
 .layoutWrapperDark{
     background-color:#2f3640 ;
+}
+@media screen and (min-width:300px) and (max-width:700px) {
+.layoutWrapper{
+    height: auto;
+}
+
 }

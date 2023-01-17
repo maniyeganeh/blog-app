@@ -6,7 +6,7 @@ import Navbar from '../navbar/Navbar';
 
 const Layout = ({ children }) => {
   const { mode } = useSelector((state) => state.mode);
-  console.log(mode);
+
   return (
     <Fragment>
       <Navbar />
@@ -16,8 +16,10 @@ const Layout = ({ children }) => {
             ? classes.layoutWrapper
             : `${classes.layoutWrapper} ${classes.layoutWrapperDark}`
         }
-      ></div>
-      {children}
+      >
+        {children}
+      </div>
+
       <Footer />
     </Fragment>
   );

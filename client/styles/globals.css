@@ -33,7 +33,7 @@
     url("/fonts/IRANYekanBold.svg") format("svg");
   font-weight: bold;
   font-style: normal;
-  font-display: swap;
+  font-display: swap; 
 }
 @font-face {
   font-family: "Iran-sans-bold";

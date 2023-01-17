@@ -1,0 +1,34 @@
+.landingPageWrapper{
+    padding: 15vh 0;
+    color: #2f3640;
+}
+.landingPageWrapperDark{
+    color: #f5f6fa;
+}
+.landingPageWrapper h1{
+    font-family: "Peyda";
+    margin-top: 20px;
+}
+.landingPageWrapper p{
+    font-family: "Iran-sans-reg";
+    line-height: 180%;
+    text-align: justify;
+}
+.intorPic{
+    width: 500px;
+    height: 400px;
+    background-color: #f5f6fa;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px #dcdde1;
+    margin: 0 auto;
+}
+@media screen and (min-width:300px) and (max-width:700px) {
+    .landingPageWrapper{
+        text-align: center;
+        padding: 10vh 0;
+    }
+    .intorPic{
+        width: 90%;
+        height: 200px;
+    }    
+}

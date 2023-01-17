@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Banner from '../components/banner/Banner'
+import Feed from '../scenes/feed/Feed'
 
 import LandingPage from "../scenes/landingpage"
 
@@ -15,6 +17,8 @@ export default function Home() {
       </Head>
       <main >
         <LandingPage />
+        <Banner />
+        <Feed />
       </main>
     </>
   )
