@@ -31,7 +31,9 @@ const LandingPage = () => {
             </p>
           </Col>
           <Col xs={12} sm={12} md={6}>
-            <div className={classes.intorPic}></div>
+            <div className={classes.intorPic}>
+              <img src="/images/blog.png" width={'100%'} height={'100%'} />
+            </div>
           </Col>
         </Row>
       </div>

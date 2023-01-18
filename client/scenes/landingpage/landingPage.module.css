@@ -7,7 +7,7 @@
 }
 .landingPageWrapper h1{
     font-family: "Peyda";
-    margin-top: 20px;
+    margin-top: 60px;
 }
 .landingPageWrapper p{
     font-family: "Iran-sans-reg";
@@ -16,11 +16,15 @@
 }
 .intorPic{
     width: 500px;
-    height: 400px;
-    background-color: #f5f6fa;
+    height: 650px;
+   
     border-radius: 20px;
-    box-shadow: 1px 1px 1px #dcdde1;
+
     margin: 0 auto;
+    margin-top: -20%;
+}
+.intorPic{
+    object-fit: cover;
 }
 @media screen and (min-width:300px) and (max-width:700px) {
     .landingPageWrapper{
