@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-const CardComponent = ({ title, description, style, image, classStyle }) => {
+const CardComponent = ({ title, description, image, classStyle }) => {
   return (
     <Card className={classStyle}>
       <Card.Img

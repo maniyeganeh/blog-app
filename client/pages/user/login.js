@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Col, Container, Row } from "react-bootstrap"
 import { useRouter } from 'next/router'
-import { toast } from "react-toastify"
+
 import classes from "./user.module.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../../store/authActions'

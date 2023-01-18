@@ -10,7 +10,7 @@ import { setMode } from '../../store/mode';
 const Navbar = () => {
   const { mode } = useSelector((state) => state.mode);
   const { token } = useSelector((state) => state.auth);
-  // const [userId, setUserId] = useState('');
+
   const userId =
     typeof window !== 'undefined' ? localStorage?.getItem('userId') : null;
 
@@ -55,24 +55,13 @@ const Navbar = () => {
                     </Link>
                   </li>
                 ))}
-                {/* {token && (
-                  <li>
-                    <Link href="/posts">پروفایل</Link>
-                  </li>
-                )} */}
 
                 <li>
                   <Link href={token ? `/user/${userId}` : '/user/login'}>
                     {token ? 'پروفایل' : 'ورود'}
                   </Link>
                 </li>
-                {/* <li>
-                  {token ? (
-                    <Link href={`/user/${userId}`}>پروفایل</Link>
-                  ) : (
-                    <Link href="/user/login">ورود</Link>
-                  )}
-                </li> */}
+
                 <li onClick={modeHandler}>
                   {mode === 'dark' ? (
                     <MdOutlineLightMode size={'20px'} />
