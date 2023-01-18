@@ -52,9 +52,8 @@ const Feed = () => {
         <h3>آخرین مطالب</h3>
         <Row>
           {dummyData.map((item, index) => (
-            <Col xs={12} sm={12} md={4} className={classes.feedCol}>
+            <Col xs={12} sm={12} md={4} className={classes.feedCol} key={index}>
               <Link
-                key={index}
                 href={`/posts/${item.id}`}
                 style={{ textDecoration: 'none' }}
               >

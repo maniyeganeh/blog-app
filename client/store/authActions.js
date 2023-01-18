@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { createAsyncThunk } from "@reduxjs/toolkit"
-
+import { toast } from "react-toastify"
 const baseUrl = 'http://localhost:8080'
+const token = typeof window !== "undefined" ? localStorage.getItem("userToken") : null
 
 export const loginUser = createAsyncThunk(
     "auth/login",
@@ -23,12 +24,28 @@ export const loginUser = createAsyncThunk(
             )
             if (typeof window !== "undefined") {
                 localStorage.setItem("userToken", data.token)
+                localStorage.setItem("userId", data.user._id)
             }
-            console.log(data);
 
+            toast.success(data.user.firstName + " " + data.user.lastName + " " + "خوش آمدی", {
+                position: 'top-right',
+                style: {
+                    direction: 'rtl',
+                    fontFamily: 'Iran-sans-reg'
+
+                }
+            })
             return data
         }
         catch (error) {
+            toast.error('  اطلاعات وارد شده اشتباه است', {
+                position: 'top-right',
+                style: {
+                    direction: 'rtl',
+                    fontFamily: 'Iran-sans-reg'
+
+                }
+            })
 
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)

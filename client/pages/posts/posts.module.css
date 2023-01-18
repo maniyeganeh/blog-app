@@ -1,0 +1,17 @@
+.postsWrapper{
+    color:#2f3640;
+    font-family: "Peyda";
+    height: auto;
+}
+.postsWrapperDark{
+    color: #f5f6fa;
+}
+.postsCard{
+    text-align: center;
+    margin: 8% auto;
+    width: 20rem;
+    border: none;
+    padding-bottom: 10px;
+    background-color: #f5f6fa;
+    color: #2f3640;
+}

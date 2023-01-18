@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+
 import Link from 'next/link';
 import classes from './navbar.module.css';
 import { menuItems } from '../../utils/menuItems';
@@ -8,10 +9,16 @@ import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
 import { setMode } from '../../store/mode';
 const Navbar = () => {
   const { mode } = useSelector((state) => state.mode);
+  const { token } = useSelector((state) => state.auth);
+  // const [userId, setUserId] = useState('');
+  const userId =
+    typeof window !== 'undefined' ? localStorage?.getItem('userId') : null;
+
   const dispatch = useDispatch();
   const modeHandler = () => {
     dispatch(setMode());
   };
+  console.log(userId);
   return (
     <div
       className={
@@ -48,6 +55,24 @@ const Navbar = () => {
                     </Link>
                   </li>
                 ))}
+                {/* {token && (
+                  <li>
+                    <Link href="/posts">پروفایل</Link>
+                  </li>
+                )} */}
+
+                <li>
+                  <Link href={token ? `/user/${userId}` : '/user/login'}>
+                    {token ? 'پروفایل' : 'ورود'}
+                  </Link>
+                </li>
+                {/* <li>
+                  {token ? (
+                    <Link href={`/user/${userId}`}>پروفایل</Link>
+                  ) : (
+                    <Link href="/user/login">ورود</Link>
+                  )}
+                </li> */}
                 <li onClick={modeHandler}>
                   {mode === 'dark' ? (
                     <MdOutlineLightMode size={'20px'} />

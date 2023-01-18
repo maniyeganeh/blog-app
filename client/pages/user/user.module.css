@@ -1,0 +1,51 @@
+.loginWrapper{
+padding:10% 0;
+font-family: "Iran-sans-reg";
+}
+.loginWrapper form{
+    display: flex;
+    flex-flow: column;
+    margin-top: 15%;
+}
+.loginWrapper form input {
+    margin-bottom: 2rem;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid #2f3640;
+    box-shadow: none !important;
+    outline: none;
+    text-align: right;
+}
+.loginWrapper form button{
+    margin: 2% 0;
+}
+.loginWrapper h6{
+    margin-top: 3%;
+    color: #40739e;
+}
+.loginWrapper a{
+    color: #487eb0;
+
+}
+.loginPic{
+    width: 500px;
+    height: 400px;
+    background-color: #487eb0;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+@media screen and (min-width:300px) and (max-width:700px) {
+.loginWrapper form{
+    width: 90%;
+    margin:  0 auto;
+    padding: 10% 0;
+}
+.loginRow{
+    flex-flow: column-reverse;
+}
+.loginPic{
+    width: 90%;
+    height: 300px;
+}
+}

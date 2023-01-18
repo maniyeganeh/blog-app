@@ -40,3 +40,14 @@ export const login = async (req, res) => {
         res.status(500).json({ error: err.message })
     }
 }
+
+export const getUser = async (req, res) => {
+    try {
+        const userId = req.params;
+        const user = await User.findById(userId);
+        res.status(200).json(user)
+    }
+    catch (err) {
+        res.status(500).json({ error: err.message })
+    }
+}
