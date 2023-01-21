@@ -3,8 +3,16 @@ import jwt from "jsonwebtoken"
 import User from "../models/User.js"
 
 export const register = async (req, res) => {
+
     try {
-        const { firstName, lastName, password, email, occupation, picturePath } = req.body;
+        console.log(req.files);
+        if (!req.files) {
+            return res.status(400).json({ message: "File Not Uploaded" })
+        }
+        const { firstName, lastName, password, email, occupation } = req.body;
+
+        const picturePath = req.files;
+        console.log(picturePath);
         const salt = await bcrypt.genSalt()
         const passHash = await bcrypt.hash(password, salt)
         const newUser = new User({

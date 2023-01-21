@@ -25,8 +25,9 @@ const userSchema = new mongoose.Schema({
         min: 5
     },
     picturePath: {
-        type: String,
-        default: ""
+        type: Array,
+        default: "",
+        required: true
     },
     occupation: String,
     role: {

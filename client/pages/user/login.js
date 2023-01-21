@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Col, Container, Row } from "react-bootstrap"
 import { useRouter } from 'next/router'
-
+import Link from "next/link"
 import classes from "./user.module.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../../store/authActions'
@@ -64,8 +64,8 @@ const Login = () => {
                         <h6>
                             حساب کاربری ندارید؟
                             <span>
-                                <a href="/">                        اینجا ثبت نام کنید
-                                </a>
+                                <Link href="/user/register">                        اینجا ثبت نام کنید
+                                </Link>
                             </span>
                         </h6>
                     </Col>

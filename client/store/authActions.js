@@ -59,16 +59,20 @@ export const loginUser = createAsyncThunk(
 
 export const registerUser = createAsyncThunk(
     "auth/register",
-    async ({ firstName, lastName, email, password, picturePath, occupation, role }, { rejectWithValue }) => {
+    async (user, { rejectWithValue }) => {
+        console.log(user.image);
         try {
             const config = {
                 header: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 }
             }
-            await axios.post(`${baseUrl}/auth/signup`, { firstName, lastName, email, password, picturePath, occupation, role },
+
+
+            const data = await axios.post(`${baseUrl}/auth/signup`, user,
                 config
             )
+            console.log(data);
         }
         catch (error) {
             if (error.response && error.response.data.message) {

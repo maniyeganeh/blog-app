@@ -3,7 +3,7 @@ import { loginUser, registerUser } from "./authActions"
 const initialState = {
     auth: "false",
     userInfo: {},
-    token: typeof window !== "undefined" ? localStorage.getItem("userToken") : null,
+    token: typeof window !== "undefined" ? localStorage?.getItem("userToken") : null,
     loading: false,
     error: null,
     success: false
