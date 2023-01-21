@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 const Profile = () => {
     const { userInfo } = useSelector(state => state.auth)
-    console.log(userInfo);
+    if(!userInfo) return <h1>Not Found </h1>
     return (
         <div><h1>
             {userInfo.firstName} {userInfo.lastName}
