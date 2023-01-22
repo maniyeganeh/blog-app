@@ -4,6 +4,7 @@
     max-height: auto;
     transition: 0.2s all linear;
     padding-bottom: 70px;
+    position: relative;
 }
 .layoutWrapperDark{
     background-color:#2f3640 ;

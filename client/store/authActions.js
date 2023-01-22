@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { createAsyncThunk } from "@reduxjs/toolkit"
+import { createAsyncThunk, createApi } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
 const baseUrl = 'http://localhost:8080'
 const token = typeof window !== "undefined" ? localStorage.getItem("userToken") : null
@@ -75,6 +75,31 @@ export const registerUser = createAsyncThunk(
             console.log(data);
         }
         catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+export const getUser = createAsyncThunk(
+    "auth/getUser",
+    async (userId, { rejectWithValue }) => {
+
+        try {
+            const config = {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+
+            }
+            const { data } = await axios.get(`${baseUrl}/user/${userId}`, config)
+            console.log(data);
+            return data
+        }
+        catch (error) {
+            console.log(error);
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
             } else {

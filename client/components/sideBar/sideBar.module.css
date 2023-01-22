@@ -1,0 +1,38 @@
+.sideBarWrapper{
+    height: 200vh;
+    background-color: #718093;
+    width: 200px;
+    position: absolute;
+    right: 0%;
+    top: 0;
+    z-index: 10;
+}
+.sideBarWrapper ul{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: center;
+    list-style: none;
+
+}
+.sideBarWrapper ul li{
+    margin: 40% 0;
+}
+.sideBarWrapper ul li a{
+    text-decoration: none;
+}
+.backdrop{
+    display: none;
+}
+@media screen and (max-width:600px) and (min-width:300px) {
+    .backdrop{
+        display: block;
+        width: 100%;
+        min-height: 100vh;
+        max-height: auto;
+        background-color: black;
+       position: absolute;
+       opacity: 50%;
+       z-index: 9;
+    }
+}

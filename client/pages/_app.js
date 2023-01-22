@@ -7,11 +7,15 @@ import { Provider } from "react-redux";
 import makeStore from "../store/store";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from "react";
+import { setMode } from "../store/mode";
+import Backdrop from "../components/sideBar/Backdrop";
 const App = ({ Component, pageProps }) => {
   return (
     <Provider store={makeStore}>
 
       <Layout>
+
         <Component {...pageProps} />
 
       </Layout>

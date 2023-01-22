@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import { BsJustify } from 'react-icons/bs';
 import Link from 'next/link';
 import classes from './navbar.module.css';
 import { menuItems } from '../../utils/menuItems';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
 import { setMode } from '../../store/mode';
+import SideDrawer from '../sideBar/SideDrawer';
+import { menuOpen } from '../../store/menu';
 const Navbar = () => {
   const { mode } = useSelector((state) => state.mode);
   const { token } = useSelector((state) => state.auth);
+  const { open } = useSelector((state) => state.menu);
 
   const userId =
     typeof window !== 'undefined' ? localStorage?.getItem('userId') : null;
@@ -18,7 +21,9 @@ const Navbar = () => {
   const modeHandler = () => {
     dispatch(setMode());
   };
-  console.log(userId);
+  const showSidebarHandler = () => {
+    dispatch(menuOpen());
+  };
   return (
     <div
       className={
@@ -29,7 +34,7 @@ const Navbar = () => {
     >
       <Container fluid>
         <Row>
-          <Col xs={6} sm={6} md={3}>
+          <Col xs={10} sm={10} md={3}>
             <Link
               href="/"
               style={{
@@ -40,7 +45,7 @@ const Navbar = () => {
               <h5>بلاگ</h5>
             </Link>
           </Col>
-          <Col xs={6} sm={6} md={9}>
+          <Col xs={2} sm={2} md={9}>
             <div className={classes.menuItemsWrapper}>
               <ul>
                 {menuItems.map((item, index) => (
@@ -70,6 +75,15 @@ const Navbar = () => {
                   )}
                 </li>
               </ul>
+            </div>
+            <div className={classes.mobileMenu}>
+              {!open && (
+                <Button onClick={showSidebarHandler}>
+                  <BsJustify />
+                </Button>
+              )}
+
+              {open && <SideDrawer />}
             </div>
           </Col>
         </Row>

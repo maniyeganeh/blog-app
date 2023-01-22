@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Button, Col, Container, Row } from "react-bootstrap"
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap"
 import { useRouter } from 'next/router'
 import Link from "next/link"
 import classes from "./user.module.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../../store/authActions'
 const Login = () => {
-    const { token, userInfo } = useSelector(state => state.auth)
+    const { token, loading } = useSelector(state => state.auth)
     const userId = typeof window !== "undefined" ? localStorage.getItem("userId") : null
     const [form, setForm] = useState({
         email: "",
@@ -58,7 +58,11 @@ const Login = () => {
                                 placeholder='رمزعبور خود را وارد کنید'
                             />
                             <Button variant='success' type='submit'>
-                                ورود
+                                {!loading ? "ورود" :
+                                    <Spinner
+                                        variant='light'
+                                    />
+                                }
                             </Button>
                         </form>
                         <h6>
