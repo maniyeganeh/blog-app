@@ -20,9 +20,23 @@
 }
 .sideBarWrapper ul li a{
     text-decoration: none;
+    font-size: 18px;
 }
 .backdrop{
     display: none;
+}
+.profilePic{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto;
+   
+}
+.profilePic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 @media screen and (max-width:600px) and (min-width:300px) {
     .backdrop{

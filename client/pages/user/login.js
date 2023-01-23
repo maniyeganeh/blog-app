@@ -6,7 +6,7 @@ import classes from "./user.module.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../../store/authActions'
 const Login = () => {
-    const { token, loading } = useSelector(state => state.auth)
+    const { token, loading, userInfo } = useSelector(state => state.auth)
     const userId = typeof window !== "undefined" ? localStorage.getItem("userId") : null
     const [form, setForm] = useState({
         email: "",
@@ -24,8 +24,9 @@ const Login = () => {
     const userLoginHandler = async (e) => {
         e.preventDefault()
         const data = await dispatch(loginUser(form))
+        console.log(data);
         if (data.type === "auth/login/fulfilled") {
-            router.push("/")
+            router.push(`/user/${data.payload.user._id}`)
         }
 
 

@@ -37,7 +37,7 @@ const dummyData = [
   },
 ];
 
-const Feed = () => {
+const Feed = ({ data }) => {
   const { mode } = useSelector((state) => state.mode);
 
   return (
@@ -51,10 +51,10 @@ const Feed = () => {
       >
         <h3>آخرین مطالب</h3>
         <Row>
-          {dummyData.map((item, index) => (
+          {data.map((item, index) => (
             <Col xs={12} sm={12} md={4} className={classes.feedCol} key={index}>
               <Link
-                href={`/posts/${item.id}`}
+                href={`/posts/${item._id}`}
                 style={{ textDecoration: 'none' }}
               >
                 <CardComponent
@@ -67,8 +67,8 @@ const Feed = () => {
                   //   }}
                   classStyle={classes.feedCard}
                   title={item.title}
-                  description={'Hello World'}
-                  image={item.image}
+                  description={item.description}
+                  image={`http://localhost:8080/${item.picturePath[0].path}`}
                 />
               </Link>
             </Col>

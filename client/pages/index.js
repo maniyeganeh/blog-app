@@ -1,12 +1,15 @@
+import axios from 'axios'
 import Head from 'next/head'
 import Banner from '../components/banner/Banner'
 import Feed from '../scenes/feed/Feed'
 
 import LandingPage from "../scenes/landingpage"
+import { getPosts } from '../utils/api'
 
 
 
-export default function Home() {
+export default function Home({ data }) {
+  const slicedData = data.slice(0, 6)
   return (
     <>
       <Head>
@@ -18,8 +21,22 @@ export default function Home() {
       <main >
         <LandingPage />
         <Banner />
-        <Feed />
+        <Feed data={slicedData} />
       </main>
     </>
   )
+}
+
+export const getStaticProps = async () => {
+  const data = await getPosts()
+  if (!data) {
+    return {
+      notFound: true
+    }
+  }
+  return {
+    props: {
+      data
+    }
+  }
 }

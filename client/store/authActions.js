@@ -2,7 +2,7 @@ import axios from 'axios'
 import { createAsyncThunk, createApi } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
 const baseUrl = 'http://localhost:8080'
-const token = typeof window !== "undefined" ? localStorage.getItem("userToken") : null
+// const token = typeof window !== "undefined" ? localStorage.getItem("userToken") : null
 
 export const loginUser = createAsyncThunk(
     "auth/login",
@@ -85,7 +85,7 @@ export const registerUser = createAsyncThunk(
 )
 export const getUser = createAsyncThunk(
     "auth/getUser",
-    async (userId, { rejectWithValue }) => {
+    async ({ userId, token }, { rejectWithValue }) => {
 
         try {
             const config = {

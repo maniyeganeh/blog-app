@@ -8,25 +8,27 @@ import { logOut } from "../../store/authSlice"
 const Profile = () => {
     const { query, push } = useRouter()
     const dispatch = useDispatch()
-    const { userInfo, error } = useSelector(state => state.auth)
+    const { userInfo, token } = useSelector(state => state.auth)
     const userId = query.userId
-
+    const req = {
+        userId,
+        token
+    }
     useEffect(() => {
-        dispatch(getUser(userId))
-    }, [])
+        dispatch(getUser(req))
+        console.log(req);
+    }, [dispatch, userId])
 
     const logoutHandler = async () => {
         dispatch(logOut())
         push("/")
     }
 
-    if (error !== null) return <h1>
-        User Not Found
-    </h1>
+
     return (
         <div>
             <h1>
-                Profile
+                {userInfo.firstName}
             </h1>
             <Button variant='danger' onClick={logoutHandler}>
                 Log Out

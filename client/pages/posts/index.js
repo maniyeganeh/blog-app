@@ -3,6 +3,7 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import CardComponent from '../../components/card/CardComponent';
+import { getPosts } from '../../utils/api';
 import classes from "./posts.module.css"
 
 const dummyData = [
@@ -58,7 +59,7 @@ const dummyData = [
     },
 ];
 
-const Posts = () => {
+const Posts = ({ data }) => {
     const { mode } = useSelector(state => state.mode)
     return (
         <Container >
@@ -66,13 +67,13 @@ const Posts = () => {
 
 
                 <Row>
-                    {dummyData.map((item, index) => (
+                    {data.map((item, index) => (
                         <Col xs={12} sm={12} md={4} key={index}>
-                            <Link href={`/posts/${item.id}`} style={{ textDecoration: 'none' }}>
+                            <Link href={`/posts/${item._id}`} style={{ textDecoration: 'none' }}>
                                 <CardComponent
                                     title={item.title}
-                                    description={"Hello world"}
-                                    image={item.image}
+                                    description={item.description}
+                                    image={`http://localhost:8080/${item.picturePath[0].path}`}
                                     classStyle={classes.postsCard}
                                 />
                             </Link>
@@ -85,3 +86,17 @@ const Posts = () => {
 }
 
 export default Posts
+
+export const getStaticProps = async () => {
+    const data = await getPosts()
+    if (!data) {
+        return {
+            notFound: true
+        }
+    }
+    return {
+        props: {
+            data
+        }
+    }
+}
