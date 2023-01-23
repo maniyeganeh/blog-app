@@ -10,6 +10,7 @@ import { getPosts } from '../utils/api'
 
 export default function Home({ data }) {
   const slicedData = data.slice(0, 6)
+
   return (
     <>
       <Head>
