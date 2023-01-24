@@ -12,7 +12,7 @@ const Profile = () => {
     const [showModal, setShowModal] = useState(false)
     const { query, push } = useRouter()
     const dispatch = useDispatch()
-    const { userInfo, token, loading } = useSelector(state => state.auth)
+    const { userInfo, token, loading, error } = useSelector(state => state.auth)
     const { mode } = useSelector(state => state.mode)
     const userId = query.userId
     const req = {
@@ -21,17 +21,17 @@ const Profile = () => {
     }
     useEffect(() => {
         dispatch(getUser(req))
-        console.log(userInfo);
-    }, [dispatch])
+        console.log(userInfo.picturePath[0]);
+    }, [])
 
     const logoutHandler = async () => {
         dispatch(logOut())
-        push("/")
+
     }
     const modalShowHandler = () => {
         setShowModal(prevState => !prevState)
     }
-    if (loading) {
+    if (loading || error) {
         return <Spinner />
     }
     return (
@@ -40,7 +40,7 @@ const Profile = () => {
                 <div className={classes.profileHeader}>
                     <div className={classes.profileImage}>
                         {userInfo &&
-                            <img src={`http://localhost:8080/${userInfo?.picturePath[0].path}`}
+                            <img src={`http://localhost:8080/${userInfo.picturePath[0].path}`}
                                 alt="profile picture"
                                 title={`${userInfo.firstName} ${userInfo.lastName}`}
                             />
