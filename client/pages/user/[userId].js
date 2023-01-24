@@ -10,19 +10,22 @@ import CardComponent from "../../components/card/CardComponent"
 import AddModal from '../../components/modal/AddModal';
 const Profile = () => {
     const [showModal, setShowModal] = useState(false)
-    const { query, push } = useRouter()
+    const { query } = useRouter()
     const dispatch = useDispatch()
     const { userInfo, token, loading, error } = useSelector(state => state.auth)
     const { mode } = useSelector(state => state.mode)
-    const userId = query.userId
+    const userId = query.userId || userInfo._id
     const req = {
         userId,
         token
     }
     useEffect(() => {
-        dispatch(getUser(req))
-        console.log(userInfo.picturePath[0]);
-    }, [])
+        if (token) {
+            dispatch(getUser(req))
+        }
+
+
+    }, [dispatch, userId])
 
     const logoutHandler = async () => {
         dispatch(logOut())
@@ -31,8 +34,13 @@ const Profile = () => {
     const modalShowHandler = () => {
         setShowModal(prevState => !prevState)
     }
-    if (loading || error) {
+    if (loading || error || !userId) {
         return <Spinner />
+    }
+    if (!token || !userInfo) {
+        return <h1>
+            Not Found
+        </h1>
     }
     return (
         <div className={mode !== "dark" ? classes.profileWrapper : `${classes.profileWrapper} ${classes.profileWrapperDark} `}>
