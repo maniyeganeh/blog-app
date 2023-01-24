@@ -4,38 +4,6 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import CardComponent from '../../components/card/CardComponent';
 import classes from './feed.module.css';
-const dummyData = [
-  {
-    id: 1,
-    title: 'پستی برای تست',
-    image: '/images/inception-01.png',
-  },
-  {
-    id: 2,
-    title: 'پستی برای تست',
-    image: '/images/poster02.png',
-  },
-  {
-    id: 3,
-    title: 'پستی برای تست',
-    image: '/images/poster07.png',
-  },
-  {
-    id: 4,
-    title: 'پستی برای تست',
-    image: '/images/poster04.png',
-  },
-  {
-    id: 5,
-    title: 'پستی برای تست',
-    image: '/images/poster05.png',
-  },
-  {
-    id: 6,
-    title: 'پستی برای تست',
-    image: '/images/poster06.png',
-  },
-];
 
 const Feed = ({ data }) => {
   const { mode } = useSelector((state) => state.mode);

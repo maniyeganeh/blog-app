@@ -9,10 +9,12 @@ import {
   MdOutlineLightMode,
   MdOutlineNightlight,
   MdLogin,
+  MdUser,
 } from 'react-icons/md';
 import { setMode } from '../../store/mode';
 import SideDrawer from '../sideBar/SideDrawer';
 import { menuOpen } from '../../store/menu';
+import { getUser } from '../../store/authActions';
 const Navbar = () => {
   const { mode } = useSelector((state) => state.mode);
   const { token, userInfo } = useSelector((state) => state.auth);
@@ -28,6 +30,10 @@ const Navbar = () => {
   const showSidebarHandler = () => {
     dispatch(menuOpen());
   };
+  useEffect(() => {
+    dispatch(getUser(userId));
+    console.log(userInfo);
+  }, [dispatch, userId]);
   return (
     <div
       className={

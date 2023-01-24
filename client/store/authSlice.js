@@ -17,7 +17,8 @@ export const authSlice = createSlice({
             state.userInfo = {};
             state.token = null;
             typeof window !== "undefined" ? localStorage?.removeItem("userToken") : "";
-            typeof window !== "undefined" ? localStorage?.removeItem("userId") : ""
+            typeof window !== "undefined" ? localStorage?.removeItem("userId") : "";
+            typeof window !== "undefined" && window.location.replace("/")
         }
     },
     extraReducers: {

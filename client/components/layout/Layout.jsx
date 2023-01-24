@@ -10,9 +10,12 @@ const Layout = ({ children }) => {
   const { mode } = useSelector((state) => state.mode);
   const { backDrop } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
+  const userId =
+    typeof window !== 'undefined' ? localStorage.getItem('userId') : null;
   useEffect(() => {
     dispatch(setMode('dark'));
-  }, []);
+  }, [dispatch]);
+
   return (
     <Fragment>
       <Navbar />
