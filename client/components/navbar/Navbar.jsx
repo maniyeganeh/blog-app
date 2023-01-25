@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { BsJustify } from 'react-icons/bs';
 import Link from 'next/link';
@@ -9,13 +10,17 @@ import {
   MdOutlineLightMode,
   MdOutlineNightlight,
   MdLogin,
+  MdLogout,
   MdUser,
 } from 'react-icons/md';
 import { setMode } from '../../store/mode';
 import SideDrawer from '../sideBar/SideDrawer';
 import { menuOpen } from '../../store/menu';
 import { getUser } from '../../store/authActions';
+import { logOut } from '../../store/authSlice';
 const Navbar = () => {
+  const { query } = useRouter();
+  console.log(query);
   const { mode } = useSelector((state) => state.mode);
   const { token, userInfo } = useSelector((state) => state.auth);
   const { open } = useSelector((state) => state.menu);
@@ -29,6 +34,9 @@ const Navbar = () => {
   };
   const showSidebarHandler = () => {
     dispatch(menuOpen());
+  };
+  const logoutHandler = async () => {
+    dispatch(logOut());
   };
   useEffect(() => {
     dispatch(getUser(userId));
@@ -108,25 +116,29 @@ const Navbar = () => {
             <div className={classes.menuItemsWrapper}>
               <ul>
                 <li>
-                  <Link
-                    href={token ? `/user/${userId}` : '/user/login'}
-                    style={{
-                      color: mode !== 'dark' ? '#353b48' : '#dcdde1',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    {token ? (
-                      <div className={classes.profilePic}>
-                        <img
-                          src={`http://localhost:8080/${userInfo?.picturePath[0].path}`}
-                          alt="profile picutre"
-                          title={userInfo.firstName + ' ' + userInfo.lastName}
-                        />
-                      </div>
-                    ) : (
-                      <MdLogin size={'25px'} />
-                    )}
-                  </Link>
+                  {query.userId ? (
+                    <MdLogout size={'25px'} onClick={logoutHandler} />
+                  ) : (
+                    <Link
+                      href={token ? `/user/${userId}` : '/user/login'}
+                      style={{
+                        color: mode !== 'dark' ? '#353b48' : '#dcdde1',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      {token ? (
+                        <div className={classes.profilePic}>
+                          <img
+                            src={`http://localhost:8080/${userInfo?.picturePath[0].path}`}
+                            alt="profile picutre"
+                            title={userInfo.firstName + ' ' + userInfo.lastName}
+                          />
+                        </div>
+                      ) : (
+                        <MdLogin size={'25px'} />
+                      )}
+                    </Link>
+                  )}
                 </li>
 
                 <li onClick={modeHandler}>

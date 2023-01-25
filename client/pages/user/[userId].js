@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Row, Spinner } from 'react-bootstrap'
-import { BsFillPlusCircleFill } from "react-icons/bs";
+import { BsFillPlusCircleFill, BsDoor } from "react-icons/bs";
+import { BiLogOut } from "react-icons/bi";
+
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../store/authActions'
 import { logOut } from "../../store/authSlice"
@@ -25,7 +27,7 @@ const Profile = () => {
         }
 
 
-    }, [dispatch, userId])
+    }, [dispatch, token, userId])
 
     const logoutHandler = async () => {
         dispatch(logOut())
@@ -60,6 +62,9 @@ const Profile = () => {
                         <h3>
                             {`${userInfo.firstName} ${" "} ${userInfo.lastName}`}
                         </h3>
+                        {/* <Button variant='danger' onClick={logoutHandler}>
+                            <BiLogOut />
+                        </Button> */}
                     </div>
                     <div className={classes.profilePost}>
                         <Row>
@@ -75,9 +80,7 @@ const Profile = () => {
                         </Row>
                     </div>
                 </div>
-                <Button variant='danger' onClick={logoutHandler}>
-                    Log Out
-                </Button>
+
                 <Button className={classes.addBtn} onClick={modalShowHandler}>
                     <BsFillPlusCircleFill />
                 </Button>

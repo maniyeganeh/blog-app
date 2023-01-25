@@ -3,10 +3,11 @@ import React from 'react';
 import { useState } from 'react';
 import { Modal, Button, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import { createPost } from '../../utils/api';
 import classes from './modal.module.css';
 const AddModal = ({ setShowModal, userId, showModal }) => {
   const { token } = useSelector((state) => state.auth);
-  console.log(token);
+
   const [image, setImage] = useState(null);
   const [form, setForm] = useState({
     title: '',
@@ -25,7 +26,6 @@ const AddModal = ({ setShowModal, userId, showModal }) => {
   };
   const imageHandlerChange = (e) => {
     setImage(e.target.files);
-    console.log(e.target.files);
   };
   const submitPost = async (e) => {
     e.preventDefault();
@@ -38,14 +38,18 @@ const AddModal = ({ setShowModal, userId, showModal }) => {
     for (let key of Object.keys(image)) {
       formData.append('image', image[key]);
     }
-    const { data } = await axios.post('http://localhost:8080/posts', {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
-      data: form,
-    });
-    console.log(data);
+
+    await createPost(formData);
+    setShowModal(false);
+    // const { data } = await axios.post('http://localhost:8080/posts', {
+    //   headers: {
+    //     Authorization: 'Bearer ' + token,
+    //   },
+    //   data: form,
+    // });
+    // console.log(data);
   };
+
   return (
     <Modal
       fullscreen
@@ -92,7 +96,12 @@ const AddModal = ({ setShowModal, userId, showModal }) => {
                 value={form.category}
                 onChange={handleInputChange}
               />
-              <input type="file" multiple onChange={imageHandlerChange} />
+              <input
+                type="file"
+                multiple
+                name="image"
+                onChange={imageHandlerChange}
+              />
             </Col>
           </Row>
           {/* <input type="text" name="creator" value={userId} disabled />
@@ -102,6 +111,14 @@ const AddModal = ({ setShowModal, userId, showModal }) => {
             <input type="text" name="category" />
             <input type="file" multiple /> */}
         </form>
+        {image !== null && (
+          <div className={classes.preview}>
+            <img src={image[0].fileName} />
+            {/* {image.map((file, index) => (
+              <img src={file.fileName} key={index} />
+            ))} */}
+          </div>
+        )}
       </Modal.Body>
 
       <Modal.Footer>

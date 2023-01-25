@@ -30,7 +30,7 @@ const Register = () => {
     };
     const imageHandlerChange = e => {
         setImage(e.target.files)
-        console.log(e.target.files);
+
 
     }
     const userRegisterHanlder = async (e) => {

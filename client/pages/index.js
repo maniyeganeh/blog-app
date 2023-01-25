@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Head from 'next/head'
+import { Spinner } from 'react-bootstrap'
 import Banner from '../components/banner/Banner'
 import Feed from '../scenes/feed/Feed'
 
@@ -10,7 +11,9 @@ import { getPosts } from '../utils/api'
 
 export default function Home({ data }) {
   const slicedData = data.slice(0, 6)
-
+  if (!data) {
+    return <Spinner />
+  }
   return (
     <>
       <Head>
