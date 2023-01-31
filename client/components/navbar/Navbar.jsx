@@ -128,11 +128,19 @@ const Navbar = () => {
                     >
                       {token ? (
                         <div className={classes.profilePic}>
-                          <img
-                            src={`http://localhost:8080/${userInfo?.picturePath[0].path}`}
-                            alt="profile picutre"
-                            title={userInfo.firstName + ' ' + userInfo.lastName}
-                          />
+                          {userInfo && (
+                            <>
+                              {userInfo?.picturePath.map((pic, index) => (
+                                <img
+                                  src={`http://localhost:8080/${pic.path}`}
+                                  alt="profile picutre"
+                                  title={
+                                    userInfo.firstName + ' ' + userInfo.lastName
+                                  }
+                                />
+                              ))}
+                            </>
+                          )}
                         </div>
                       ) : (
                         <MdLogin size={'25px'} />

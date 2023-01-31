@@ -15,7 +15,8 @@ const postSchema = new mongoose.Schema({
     },
     picturePath: {
         type: Array,
-        default: ""
+        default: "",
+        required: true
     },
     creator: {
         type: mongoose.Types.ObjectId,

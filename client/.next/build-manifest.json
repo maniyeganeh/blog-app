@@ -35,10 +35,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/posts.js"
     ],
+    "/posts/[postId]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/posts/[postId].js"
+    ],
     "/user/[userId]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/user/[userId].js"
+    ],
+    "/user/login": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/user/login.js"
     ]
   },
   "ampFirstPages": []

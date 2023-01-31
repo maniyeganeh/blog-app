@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Row, Spinner } from 'react-bootstrap'
 import { BsFillPlusCircleFill, BsDoor } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
-
+import Link from "next/link"
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../store/authActions'
 import { logOut } from "../../store/authSlice"
@@ -50,10 +50,16 @@ const Profile = () => {
                 <div className={classes.profileHeader}>
                     <div className={classes.profileImage}>
                         {userInfo &&
-                            <img src={`http://localhost:8080/${userInfo.picturePath[0].path}`}
-                                alt="profile picture"
-                                title={`${userInfo.firstName} ${userInfo.lastName}`}
-                            />
+                            <>
+                                {userInfo?.picturePath.map((pic, index) => (
+                                    <img src={`http://localhost:8080/${pic.path}`}
+                                        key={index}
+                                        alt="profile picture"
+                                        title={`${userInfo.firstName} ${userInfo.lastName}`}
+                                    />
+                                ))}
+                            </>
+
 
                         }
 
@@ -69,13 +75,18 @@ const Profile = () => {
                     <div className={classes.profilePost}>
                         <Row>
                             {userInfo?.posts.map((post, index) => (
+
                                 <Col xs={12} sm={12} md={4} key={index}>
-                                    <CardComponent
-                                        title={post.title}
-                                        image={`http://localhost:8080/${post?.picturePath[0].path}`}
-                                        classStyle={classes.profileCard}
-                                    />
+                                    <Link href={`/posts/${post._id}`}>
+                                        <CardComponent
+                                            title={post.title}
+                                            image={`http://localhost:8080/${post?.picturePath[0].path}`}
+                                            classStyle={classes.profileCard}
+                                        />
+                                    </Link>
                                 </Col>
+
+
                             ))}
                         </Row>
                     </div>
@@ -84,16 +95,17 @@ const Profile = () => {
                 <Button className={classes.addBtn} onClick={modalShowHandler}>
                     <BsFillPlusCircleFill />
                 </Button>
-                {showModal &&
+                {
+                    showModal &&
                     <AddModal
                         setShowModal={setShowModal}
                         userId={userId}
                         showModal={showModal}
                     />
                 }
-            </Container>
+            </Container >
 
-        </div>
+        </div >
     )
 }
 

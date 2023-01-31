@@ -15,3 +15,41 @@
     background-color: #f5f6fa;
     color: #2f3640;
 }
+.title{
+    font-family: "Peyda";
+}
+.siglePostWrapper{
+ padding-top: 90px;
+ font-family: "Iran-sans-reg";
+ color:#2f3640;
+
+}
+.siglePostWrapperDark{
+    color: #f5f6fa;
+}
+
+.pictureFrame{
+    width: 95%;
+    height: 300px;
+    margin: 0 auto;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+.pictureRow{
+    width: 95%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: flex-start;
+}
+.pictureFrame img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.pictureBox{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    border-radius: 10px;
+    margin: 2% 1%;
+}

@@ -32,3 +32,14 @@ export const createPost = async (post) => {
         console.log(err);
     }
 }
+
+export const getSinglePost = async (postId) => {
+    try {
+        const { data } = await axios(`${BASE_URL}/posts/${postId}`)
+
+        return data
+    }
+    catch (err) {
+        console.log(err);
+    }
+}

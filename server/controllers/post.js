@@ -2,7 +2,12 @@ import Post from "../models/Post.js"
 import User from "../models/User.js"
 
 export const createPost = async (req, res) => {
+    console.log(req);
     try {
+
+        if (!req.files) {
+            return res.status(400).json({ message: "File Not Uploaded" })
+        }
         const { title, subtitle, description, category, creator } = req.body;
         const picturePath = req.files
         const post = new Post({
@@ -32,7 +37,7 @@ export const createPost = async (req, res) => {
 }
 export const getPosts = async (req, res) => {
     try {
-        const post = await Post.find()
+        const post = await Post.find().sort({ _id: -1 })
         res.status(200).json(post)
     }
     catch (err) {
