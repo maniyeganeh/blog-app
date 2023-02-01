@@ -2,7 +2,9 @@ import Layout from "../components/layout/Layout";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/css/bootstrap.rtl.min.css"
+
 import "../styles/globals.css"
+
 import { Provider } from "react-redux";
 import makeStore from "../store/store";
 import { ToastContainer } from 'react-toastify';

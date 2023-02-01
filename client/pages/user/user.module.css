@@ -66,9 +66,12 @@ font-family: "Iran-sans-reg";
     font-family: "Peyda";
 }
 .profilePost{
-    
+    font-family: "Peyda";
     width: 100%;
     
+}
+.profilePost a{
+    text-decoration: none;
 }
 .profileCard{
     text-align: center;
@@ -78,7 +81,7 @@ font-family: "Iran-sans-reg";
     padding-bottom: 10px;
     background-color: #f5f6fa;
     color: #2f3640;
-    height: 20rem;
+   height: auto;
 }
 .addBtn{
     position: absolute;

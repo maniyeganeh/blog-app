@@ -2,9 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/user/[userId]": "pages/user/[userId].js",
+  "/posts": "pages/posts.js",
   "/": "pages/index.js",
-  "/user/login": "pages/user/login.js",
   "/posts/[postId]": "pages/posts/[postId].js",
-  "/posts": "pages/posts.js"
+  "/user/[userId]": "pages/user/[userId].js"
 }

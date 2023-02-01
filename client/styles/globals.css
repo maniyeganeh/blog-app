@@ -59,3 +59,19 @@
   font-style: normal;
   font-display: swap;
 }
+/* .swiper-pagination-bullet{
+  padding: 5px 10px;
+	border-radius: 0;
+	width: auto;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 12px;
+	color:#000;
+	opacity: 1;
+	background: rgba(0,0,0,0.2);
+}
+.swiper-pagination-bullet-active{
+	color:#fff;
+	background: #007aff;
+} */
