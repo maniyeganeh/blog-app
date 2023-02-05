@@ -34,6 +34,7 @@
     margin: 0 auto;
     background-color: aliceblue;
     border-radius: 10px;
+    object-fit: cover;
 }
 .pictureRow{
     width: 95%;
@@ -62,7 +63,7 @@
     color: #888;
 }
 .pictureBoxActive{
-    border: 1px solid rebeccapurple;
+    border: 2px solid #f5f6fa;
 }
 @media screen and (min-width:300px) and (max-width:700px) {
 .siglePostWrapper{
@@ -70,7 +71,7 @@
    text-align: justify;
 }
 .pictureRow{
-    display: none;
+    display: block;
 }
 .title{
     margin-top: 5%;

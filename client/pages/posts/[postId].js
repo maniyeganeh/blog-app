@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { getPosts, getSinglePost } from '../../utils/api'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, EffectFade } from 'swiper';
+import { motion, AnimatePresence } from "framer-motion"
 import 'swiper/css';
 import "swiper/css/pagination";
 import classes from "./posts.module.css"
@@ -61,28 +62,40 @@ const SinglePost = () => {
                                 {post.picturePath &&
                                     <>
                                         {post?.picturePath.map((pic, index) => (
-                                            <>
+                                            <AnimatePresence>
 
-                                                {current === index ?
-                                                    <SwiperSlide className={classes.pictureFrame} key={index} >
-                                                        <img
+                                                {current === index &&
+                                                    <motion.img
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        transition={{
+                                                            type: "spring",
+                                                            bounce: 0.5,
+                                                            opacity: { duration: 0.8 },
+                                                        }}
+                                                        className={classes.pictureFrame} key={index}
+
+                                                        src={`http://localhost:8080/${pic.path}`}
+                                                    />
+                                                    // <SwiperSlide className={classes.pictureFrame} key={index} >
+                                                    //     <img
 
 
-                                                            src={`http://localhost:8080/${pic.path}`}
-                                                        />
-                                                    </SwiperSlide>
-                                                    :
-                                                    <SwiperSlide className={classes.pictureFrame} key={index} >
-                                                        <img
+                                                    //         src={`http://localhost:8080/${pic.path}`}
+                                                    //     />
+                                                    // </SwiperSlide>
+                                                    // :
+                                                    // <SwiperSlide className={classes.pictureFrame} key={index} >
+                                                    //     <img
 
 
-                                                            src={`http://localhost:8080/${pic.path}`}
-                                                        />
-                                                    </SwiperSlide>
+                                                    //         src={`http://localhost:8080/${pic.path}`}
+                                                    //     />
+                                                    // </SwiperSlide>
 
                                                 }
 
-                                            </>
+                                            </AnimatePresence>
 
 
                                         ))}</>
