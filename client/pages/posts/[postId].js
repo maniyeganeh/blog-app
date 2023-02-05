@@ -11,6 +11,8 @@ import "swiper/css/pagination";
 import classes from "./posts.module.css"
 const SinglePost = () => {
     const [current, setCurrent] = useState(0)
+    const [imageModal, setImageModal] = useState(false)
+    const [image, setImage] = useState(null)
     const { mode } = useSelector(state => state.mode)
     const { query } = useRouter()
 
@@ -21,13 +23,23 @@ const SinglePost = () => {
         setPost(await getSinglePost(query.postId))
         setPosts(await getPosts())
     }
+    const imageModalHadler = () => {
+        setImageModal(prevState => !prevState)
+    }
+    const curretImage = () => {
+        post.picturePath &&
+            post?.picturePath.map((pic, index) => (
+                current === index && setImage(pic)
+            ))
+    }
     useEffect(() => {
         data()
 
     }, [query])
+    console.log(image);
     const filteredPost = posts.filter(post => post._id !== query.postId)
 
-    console.log(current);
+
     if (!post) return <h1>Loadig</h1>
     return (
         <Container >
@@ -49,13 +61,29 @@ const SinglePost = () => {
                                 {post.picturePath &&
                                     <>
                                         {post?.picturePath.map((pic, index) => (
-                                            <SwiperSlide className={classes.pictureFrame} key={index} onDrag={() => setCurrent(index)}>
-                                                <img
+                                            <>
+
+                                                {current === index ?
+                                                    <SwiperSlide className={classes.pictureFrame} key={index} >
+                                                        <img
 
 
-                                                    src={`http://localhost:8080/${pic.path}`}
-                                                />
-                                            </SwiperSlide>
+                                                            src={`http://localhost:8080/${pic.path}`}
+                                                        />
+                                                    </SwiperSlide>
+                                                    :
+                                                    <SwiperSlide className={classes.pictureFrame} key={index} >
+                                                        <img
+
+
+                                                            src={`http://localhost:8080/${pic.path}`}
+                                                        />
+                                                    </SwiperSlide>
+
+                                                }
+
+                                            </>
+
 
                                         ))}</>
                                 }
@@ -98,7 +126,8 @@ const SinglePost = () => {
                                 <>
                                     {post?.picturePath.map((pic, index) => (
                                         <img
-                                            className={classes.pictureBox}
+                                            onClick={() => setCurrent(index)}
+                                            className={current === index ? `${classes.pictureBox} ${classes.pictureBoxActive}` : classes.pictureBox}
                                             key={index}
                                             src={`http://localhost:8080/${pic.path}`}
                                         />
@@ -113,6 +142,10 @@ const SinglePost = () => {
                         <h2 className={classes.title}>
                             {post.title}
                         </h2>
+                        <h6 className={classes.creator}>
+                            سازنده : {post?.creator?.firstName} {" "} {post?.creator?.lastName}
+                        </h6>
+
                         <h4>
                             {post.subtitle}
                         </h4>

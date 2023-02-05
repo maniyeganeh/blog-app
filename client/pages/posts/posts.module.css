@@ -56,6 +56,14 @@
     margin: 2% 1%;
     object-fit: cover;
 }
+.creator{
+    font-size: 12px;
+    font-weight: lighter;
+    color: #888;
+}
+.pictureBoxActive{
+    border: 1px solid rebeccapurple;
+}
 @media screen and (min-width:300px) and (max-width:700px) {
 .siglePostWrapper{
    padding-top: 40px;

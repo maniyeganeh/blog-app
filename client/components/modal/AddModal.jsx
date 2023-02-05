@@ -61,7 +61,11 @@ const AddModal = ({ setShowModal, userId, showModal }) => {
         <Modal.Title>پست جدید</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form className={classes.modalForm} onSubmit={submitPost}>
+        <form
+          className={classes.modalForm}
+          onSubmit={submitPost}
+          encType="multipart/form-data"
+        >
           <Row>
             <Col xs={12} sm={12} md={6} lg={6}>
               <input type="text" name="creator" value={form.creator} disabled />
@@ -125,7 +129,7 @@ const AddModal = ({ setShowModal, userId, showModal }) => {
         <Button variant="secondary" onClick={() => setShowModal(false)}>
           بستن
         </Button>
-        <Button variant="primary" onClick={submitPost}>
+        <Button type="submit" variant="primary" onClick={submitPost}>
           ثبت
         </Button>
       </Modal.Footer>

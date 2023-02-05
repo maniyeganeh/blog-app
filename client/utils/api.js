@@ -20,7 +20,7 @@ export const createPost = async (post) => {
         const config = {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('userToken'),
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
             }
 
         }
