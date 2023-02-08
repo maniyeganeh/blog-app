@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Row, Spinner } from 'react-bootstrap'
-import { BsFillPlusCircleFill, BsDoor } from "react-icons/bs";
-import { BiLogOut } from "react-icons/bi";
+import { BsFillPlusCircleFill } from "react-icons/bs";
+
 import Link from "next/link"
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../store/authActions'
@@ -68,6 +68,12 @@ const Profile = () => {
                         <h3>
                             {`${userInfo.firstName} ${" "} ${userInfo.lastName}`}
                         </h3>
+                        <div className={classes.btnWrapper}>
+                            <Button className={classes.postBtn} onClick={modalShowHandler}>
+                                <BsFillPlusCircleFill />
+                            </Button>
+                        </div>
+
                         {/* <Button variant='danger' onClick={logoutHandler}>
                             <BiLogOut />
                         </Button> */}
@@ -92,16 +98,21 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <Button className={classes.addBtn} onClick={modalShowHandler}>
+                {/* <Button className={classes.addBtn} onClick={modalShowHandler}>
                     <BsFillPlusCircleFill />
-                </Button>
+                </Button> */}
+
                 {
                     showModal &&
+
+
                     <AddModal
+
                         setShowModal={setShowModal}
                         userId={userId}
                         showModal={showModal}
                     />
+
                 }
             </Container >
 

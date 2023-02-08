@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import CardComponent from '../../components/card/CardComponent';
 import { getPosts } from '../../utils/api';
 import classes from "./posts.module.css"
+import { motion } from "framer-motion"
 
 const dummyData = [
     {
@@ -63,7 +64,15 @@ const Posts = ({ data }) => {
     const { mode } = useSelector(state => state.mode)
     return (
         <Container >
-            <div className={mode !== "dark" ? classes.postsWrapper : `${classes.postsWrapper} ${classes.postsWrapperDark}`}>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                    type: "spring",
+
+
+                }}
+                className={mode !== "dark" ? classes.postsWrapper : `${classes.postsWrapper} ${classes.postsWrapperDark}`}>
 
 
                 <Row>
@@ -80,7 +89,7 @@ const Posts = ({ data }) => {
                         </Col>
                     ))}
                 </Row>
-            </div>
+            </motion.div>
         </Container>
     )
 }

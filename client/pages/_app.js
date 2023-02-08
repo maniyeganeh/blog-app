@@ -13,6 +13,11 @@ import { useEffect } from "react";
 import { setMode } from "../store/mode";
 import Backdrop from "../components/sideBar/Backdrop";
 const App = ({ Component, pageProps }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => console.log('Initial timeout!'), 1000);
+    return () => clearTimeout(timer);
+
+  }, []);
   return (
     <Provider store={makeStore}>
 

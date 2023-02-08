@@ -1,13 +1,16 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import CardComponent from '../../components/card/CardComponent';
 import classes from './feed.module.css';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Feed = ({ data }) => {
   const { mode } = useSelector((state) => state.mode);
-
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <Container>
       <div
@@ -20,7 +23,14 @@ const Feed = ({ data }) => {
         <h3>آخرین مطالب</h3>
         <Row>
           {data.map((item, index) => (
-            <Col xs={12} sm={12} md={4} className={classes.feedCol} key={index}>
+            <Col
+              xs={12}
+              sm={12}
+              md={4}
+              className={classes.feedCol}
+              key={index}
+              data-aos="fade-in"
+            >
               <Link
                 href={`/posts/${item._id}`}
                 style={{ textDecoration: 'none' }}

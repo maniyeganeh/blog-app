@@ -1,5 +1,6 @@
 .feedWrapper{
     margin-top: 15vh;
+
     color:#2f3640;
     font-family: "Peyda";
     height: auto;
@@ -19,6 +20,7 @@
     background-color: #f5f6fa;
     color: #2f3640;
     border: none;
+    padding-bottom: 10px;
 }
 .buttonWrapper{
     display: flex;

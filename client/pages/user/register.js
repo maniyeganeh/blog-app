@@ -93,13 +93,7 @@ const Register = () => {
                                 ورود
                             </Button>
                         </form>
-                        <h6>
-                            حساب کاربری ندارید؟
-                            <span>
-                                <a href="/">                        اینجا ثبت نام کنید
-                                </a>
-                            </span>
-                        </h6>
+
                     </Col>
                     <Col xs={12} sm={12} md={8}>
                         <div className={classes.loginPic}></div>
