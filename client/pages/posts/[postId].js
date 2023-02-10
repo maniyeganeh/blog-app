@@ -5,7 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { getPosts, getSinglePost } from '../../utils/api'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, EffectFade } from 'swiper';
+import { Pagination, EffectFade, Scrollbar, A11y, Navigation } from 'swiper';
 import { motion, AnimatePresence } from "framer-motion"
 import 'swiper/css';
 import "swiper/css/pagination";
@@ -49,7 +49,34 @@ const SinglePost = () => {
                     <Col xs={12} sm={12} md={6}>
 
                         <div >
-                            <Swiper
+                            {post.picturePath &&
+                                <>
+                                    {post?.picturePath.map((pic, index) => (
+                                        <AnimatePresence>
+
+                                            {current === index &&
+                                                <motion.img
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    transition={{
+                                                        type: "spring",
+                                                        bounce: 0.5,
+                                                        opacity: { duration: 0.8 },
+                                                    }}
+                                                    className={classes.pictureFrame} key={index}
+
+                                                    src={`http://localhost:8080/${pic.path}`}
+                                                />
+
+                                            }
+
+                                        </AnimatePresence>
+
+
+                                    ))}</>
+                            }
+
+                            {/* <Swiper
                                 pagination={{
                                     dynamicBullets: true,
                                 }}
@@ -58,50 +85,50 @@ const SinglePost = () => {
                                 className="mySwiper"
                                 onSwiper={(swiper) => console.log(swiper)}
                                 onSlideChange={() => console.log(current)}
-                            >
-                                {post.picturePath &&
-                                    <>
-                                        {post?.picturePath.map((pic, index) => (
-                                            <AnimatePresence>
+                            > */}
+                            {/* {post.picturePath &&
+                                <>
+                                    {post?.picturePath.map((pic, index) => (
+                                        <AnimatePresence>
 
-                                                {current === index &&
-                                                    <motion.img
-                                                        initial={{ opacity: 0 }}
-                                                        animate={{ opacity: 1 }}
-                                                        transition={{
-                                                            type: "spring",
-                                                            bounce: 0.5,
-                                                            opacity: { duration: 0.8 },
-                                                        }}
-                                                        className={classes.pictureFrame} key={index}
+                                            {current === index &&
+                                                <motion.img
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    transition={{
+                                                        type: "spring",
+                                                        bounce: 0.5,
+                                                        opacity: { duration: 0.8 },
+                                                    }}
+                                                    className={classes.pictureFrame} key={index}
 
-                                                        src={`http://localhost:8080/${pic.path}`}
-                                                    />
-                                                    // <SwiperSlide className={classes.pictureFrame} key={index} >
-                                                    //     <img
-
-
-                                                    //         src={`http://localhost:8080/${pic.path}`}
-                                                    //     />
-                                                    // </SwiperSlide>
-                                                    // :
-                                                    // <SwiperSlide className={classes.pictureFrame} key={index} >
-                                                    //     <img
+                                                    src={`http://localhost:8080/${pic.path}`}
+                                                />
+                                                // <SwiperSlide className={classes.pictureFrame} key={index} >
+                                                //     <img
 
 
-                                                    //         src={`http://localhost:8080/${pic.path}`}
-                                                    //     />
-                                                    // </SwiperSlide>
+                                                //         src={`http://localhost:8080/${pic.path}`}
+                                                //     />
+                                                // </SwiperSlide>
+                                                // :
+                                                // <SwiperSlide className={classes.pictureFrame} key={index} >
+                                                //     <img
 
-                                                }
 
-                                            </AnimatePresence>
+                                                //         src={`http://localhost:8080/${pic.path}`}
+                                                //     />
+                                                // </SwiperSlide>
+
+                                            }
+
+                                        </AnimatePresence>
 
 
-                                        ))}</>
-                                }
+                                    ))}</>
+                            } */}
 
-                            </Swiper>
+                            {/* </Swiper> */}
 
                             {/* <Swiper
                                 modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -117,9 +144,10 @@ const SinglePost = () => {
                                 {post.picturePath &&
                                     <>
                                         {post?.picturePath.map((pic, index) => (
-                                            <SwiperSlide>
+                                            <SwiperSlide className={classes.pictureFrame} key={index} >
                                                 <img
-                                                    key={index}
+
+
                                                     src={`http://localhost:8080/${pic.path}`}
                                                 />
                                             </SwiperSlide>
